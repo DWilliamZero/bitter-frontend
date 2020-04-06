@@ -54,12 +54,12 @@ Bitter is an "Angry-Bird" parody of twitter.  Users can create an account, login
 ## Link to deployed site
 
 ## Installation instructions
-- Clone backend repo from:  [bitter-backend](https://www.lucidchart.com/)
+- Clone backend repo from:  [bitter-backend](https://github.com/DWilliamZero/bitter-backend)
    - CD into Repo
    - Run 'bundle install'
    - Run 'rails db:create'
    
-- Clone frontend repo from:  [bitter-frontend](https://www.lucidchart.com/)
+- Clone frontend repo from:  [bitter-frontend](https://github.com/DWilliamZero/bitter-frontend)
    - CD in to repo
    - Run 'npm install'
    - Run 'npm start'
