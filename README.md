@@ -38,6 +38,34 @@ Bitter is an "Angry-Bird" parody of twitter.  Users can create an account, login
  - Made with [draw.io](https://www.draw.io/)
 
  ## Server-side Routes
+ ### Users Routes:
+ - GET /users
+ - GET /users/:id
+ - POST /users
+ - PUT /users/:id
+ - DELETE /users/:id
+
+ ### Posts Routes:
+ - GET user/:user_id/posts
+ - GET user/:user_id/posts/:id
+ - POST user/:user_id/posts
+ - PUT user/:user_id/posts/:id
+ - user/:user_id/posts/:id
+
+ ### Hates Routes:
+ - GET user/:user_id/posts/:post_id/hates
+ - POST user/:user_id/posts/:post_id/hates
+ - DELETE user/:user_id/post/:post_id/hates
+
+ ### Follows Routes:
+ - GET user/:user_id/followers
+ - GET user/:user_id/following
+ - POST /follow
+ - DELETE /un-follow
+
+ ### Authentication Routes:
+ - POST /auth/login
+ - GET /auth/verify
  
  ## Expected Challenges
 
