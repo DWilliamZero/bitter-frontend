@@ -39,7 +39,6 @@ Bitter is an "Angry-Bird" parody of twitter.  Users can create an account, login
 
  ## Server-side Routes
  ### Users Routes:
- - GET /users
  - GET /users/:id
  - POST /users
  - PUT /users/:id
@@ -50,7 +49,7 @@ Bitter is an "Angry-Bird" parody of twitter.  Users can create an account, login
  - GET user/:user_id/posts/:id
  - POST user/:user_id/posts
  - PUT user/:user_id/posts/:id
- - user/:user_id/posts/:id
+ - DELETE user/:user_id/posts/:id
 
  ### Hates Routes:
  - GET user/:user_id/posts/:post_id/hates
