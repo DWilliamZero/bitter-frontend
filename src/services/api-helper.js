@@ -21,7 +21,7 @@ export const login = async (body) => {
   return res.data.user
 }
 
-export const signUp = async (body) => {
+export const createNewUser = async (body) => {
   const res = await api.post('/users', { user: body })  //based on strong params from backend
   localStorage.setItem('authToken', res.data.token);
   api.defaults.headers.common.authorization = `Bearer ${res.data.token}`
@@ -43,49 +43,92 @@ export const logOut = () => {
 }
 
 //================================
-//=========  xxxxx  ==============
+//=========  Users  ==============
 //================================
 
-export const allFoods = async () => {
-  const res = await api.get('/foods')
+export const getUserById = async (id) => {
+  const res = await api.get(`/users/${id}`)
   return res.data;
 }
 
-export const oneFoods = async (id) => {
-  const res = await api.get(`/foods/${id}`)
+export const updateUserById = async (id, data) => {
+  const res = await api.put(`/users/${id}`, { user: data })  //check strong params for user_controller
   return res.data;
 }
 
-export const createFood = async (data) => {
-  const res = await api.post('/foods', { foods: data })
-  return res.data;
-}
-
-export const updateFood = async (data, id) => {
-  const res = await api.put(`/foods/${id}`, { foods: data })
-  return res.data;
-}
-
-export const deleteFood = async (id) => {
-  const res = await api.delete(`/foods/${id}`)
+export const deleteUserById = async (id) => {
+  const res = await api.delete(`/users/${id}`)
   return res.data;
 }
 
 //=================================
-//=========  xxxxxxx  =============
+//===========  Posts  =============
 //=================================
 
-export const allFlavors = async () => {
-  const res = await api.get('/flavors')
+export const getAllPostsByUserId = async (userId) => {
+  const res = await api.get(`/users/${userId}`)
   return res.data;
 }
 
-export const oneFlavor = async (id) => {
-  const res = await api.get(`/flavors/${id}`)
+export const getUserPostByPostId = async (userId, postId) => {
+  const res = await api.get(`/users/${userId}/posts/${postId}`)
   return res.data;
 }
 
-export const addFlavor = async (flavorId, foodId) => {
-  const res = await api.get(`/flavors/${flavorId}/foods/${foodId}`)
+export const createNewUserPost = async (userId, data) => {
+  const res = await api.post(`/users/${userId}/posts`, { post: data })  //check strong params for user_controller
+  return res.data;
+}
+
+export const updateUsersPost = async (userId, postId, data) => {
+  const res = await api.put(`/users/${userId}/posts/${postId}`, { post: data })  //check strong params for user_controller
+  return res.data;
+}
+
+export const deleteUsersPost = async (userId, postId) => {
+  const res = await api.delete(`/users/${userId}/posts/${postId}`)
+  return res.data;
+}
+
+//=================================
+//===========  Hates  =============
+//=================================
+
+export const getHatesByUsersPostId = async (userId, postId) => {       //returns hate_count by postId
+  const res = await api.get(`/users/${userId}/posts/${postId}/hates`)
+  return res.data;
+}
+
+export const hateThisPost = async (userId, postId) => {
+  const res = await api.post(`/users/${userId}/posts/${postId}/hates`)
+  return res.data;
+}
+
+export const removeHate = async (userId, postId) => {
+  const res = await api.delete(`/users/${userId}/posts/${postId}/hates`)
+  return res.data;
+}
+
+//=================================
+//==========  Follows  ============
+//=================================
+
+export const getUsersFollowers = async (userId) => {
+  const res = await api.get(`/users/${userId}/followers`)
+  return res.data;
+}
+
+export const getUserFollowing = async (userId) => {
+  const res = await api.get(`/users/${userId}/following`)
+  return res.data;
+}
+
+export const newFollow = async (data) => {
+  const res = await api.post(`/follow`, { follow: data })  //check strong params for user_controller
+  return res.data;
+}
+
+export const unFollow = async (data) => {
+  const res = await api.delete(`/un-follow`, { follow: data })
   return res.data;
 }
