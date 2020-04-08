@@ -1,7 +1,8 @@
 import React from 'react';
 import Footer from './Footer';
 import Login from './Login';
-import { login, verifyUser } from '../services/api-helper';
+import Logout from './Logout';
+import { login, verifyUser, logOut } from '../services/api-helper';
 
 
 class Container extends React.Component {
@@ -39,6 +40,14 @@ class Container extends React.Component {
     console.log(currentUser)
   }
 
+  handleLogout = () => {
+    console.log('logout clicked')
+    logOut();
+    this.setState({
+      user: null
+    })
+  }
+
   render() {
     return (
       <>
@@ -46,7 +55,11 @@ class Container extends React.Component {
           <div className='left-bottom'> left light blue</div>
           <div className='right-top'>
             right dark blue
-            <Login handleChange={this.handleChange} handleLogin={this.handleLogin} />
+            {this.state.user == null ?
+              <Login handleChange={this.handleChange} handleLogin={this.handleLogin} />
+              :
+              <Logout handleLogout={this.handleLogout} />
+            }
           </div>
         </div>
         <Footer />

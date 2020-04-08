@@ -39,7 +39,7 @@ export const verifyUser = async () => {
 }
 
 export const logOut = () => {
-  api.defaults.headers.common.authorization = null
+  localStorage.setItem('authToken', '');
 }
 
 //================================
