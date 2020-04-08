@@ -1,4 +1,191 @@
-.App {
-  text-align: center;
+* { margin:0; padding:0; box-sizing:border-box; }
+
+.container {
+  background-color:rgb(21, 32, 43);
+  display: flex;
+  flex-direction: row;
+  height: 900px;
+  width: 100%;
 }
 
+.left-bottom {
+  background-color: rgb(113, 201, 248);
+  background-image: url('https://dwilliamzero.com/zero-cloud/bitter-logo.png');
+  background-repeat: no-repeat;
+  background-size: 1050px;
+  margin: 0;
+  width: 50%;
+}
+
+.right-top {
+  display: flex;
+  justify-content: center;
+  background-color:rgb(21, 32, 43);
+  color: #8899A6;
+  width: 50%;
+  padding: 15px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(21, 32, 43);
+  color: #8899A6;
+  height: 71px;
+}
+
+.footer p {
+  margin: 0px;
+  padding-top: 30px;
+}
+input {
+  margin: 10px;
+}
+
+input.username {
+  font-size: 20px;
+  background-color: rgb(21, 32, 63);
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 3px solid #8899A6;
+  color:white;
+  outline: none;
+  padding: 5px;
+
+}
+
+input.password {
+  font-size: 20px;
+  background-color: rgb(21, 32, 63);
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 3px solid #8899A6;
+  color: white;
+  outline: none;
+  padding: 5px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #8899A6;
+}
+
+.password:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgb(29, 161, 242);
+}
+
+.username:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgb(29, 161, 242);
+}
+
+input.username:focus {
+  border-bottom: 3px solid rgb(29,161,242);
+}
+
+input.password:focus {
+  border-bottom: 3px solid rgb(29,161,242);
+}
+
+button {
+  border-radius: 50px;
+  border: 2px solid rgb(29, 161, 242);
+  background-color: rgb(21, 32, 43);
+  font-size: 20px;
+  padding: 10px;
+  color: rgb(29, 161, 242);
+  outline: none;
+}
+
+button:hover {
+  background-color: rgb(21, 32, 73);
+}
+
+.feed-page {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  font-size: 20px;
+  width: 100%;
+}
+
+.feed-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+
+.new-post-btn {
+  margin: 50px;
+}
+
+.feed-card {
+  border-left: 1px solid #8899A6;
+  border-right: 1px solid #8899A6;
+  height: 970px;
+  width: 50%;
+  overflow: auto;  /* This should allow scrolling of overflow only.. */
+}
+
+.feed-card-title {
+  border-bottom: 1px solid #8899A6;
+  height: 70px;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.overlay-on {
+  position: fixed; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+.overlay-off {
+  display: none; /* Hidden by default */
+}
+
+.new-post-modal-on {
+  display: grid;
+  position: fixed;
+  left: 20%;
+  top: 5%;
+  border: 2px solid #8899A6;
+  background-color: rgb(21, 32, 63);
+  box-shadow: 2px 2px 3px black;
+  height: 300px;
+  margin: 200px auto;
+  width: 60%;
+  z-index: 2;
+}
+
+.new-post-modal-off {
+display: none
+}
+
+.modal-form {
+  margin: 30px auto;
+}
+
+.modal-btn {
+  margin: 50px;
+}
+
+.feed-card-right {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.logout {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+  }

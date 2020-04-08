@@ -5,10 +5,10 @@ const api = axios.create({
   baseURL: 'http://localhost:3000'
 })
 
-//production api
-const api = axios.create({
-  baseURL: 'http://localhost:3000'
-})
+// //production api
+// const api = axios.create({
+//   baseURL: 'http://localhost:3000'
+// })
 
 //=================================
 //===========  Auth  ==============
@@ -39,7 +39,7 @@ export const verifyUser = async () => {
 }
 
 export const logOut = () => {
-  api.defaults.headers.common.authorization = null
+  localStorage.setItem('authToken', '');
 }
 
 //================================

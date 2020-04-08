@@ -1,12 +1,10 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import Container from './components/Container'
 
-function App() {
+export default function App() {
   return (
     <>
-      <h1>Another Crazy App</h1>
+      <Container />
     </>
-  );
+  )
 }
-
-export default App;
