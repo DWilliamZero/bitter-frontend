@@ -1,4 +1,98 @@
-.App {
-  text-align: center;
+* { margin:0; padding:0; box-sizing:border-box; }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 900px;
+  width: 100%;
 }
 
+.left-bottom {
+  background-color: rgb(113, 201, 248);
+  background-image: url('https://dwilliamzero.com/zero-cloud/bitter-logo.png');
+  background-repeat: no-repeat;
+  background-size: 1050px;
+  margin: 0;
+  width: 50%;
+}
+
+.right-top {
+  display: flex;
+justify-content: center;
+  background-color:rgb(21, 32, 43);
+  color: #8899A6;
+  width: 50%;
+  padding: 15px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(21, 32, 43);
+  color: #8899A6;
+  height: 71px;
+}
+
+.footer p {
+  margin: 0px;
+  padding-top: 30px;
+}
+input {
+  margin: 10px;
+}
+
+input.username {
+  font-size: 20px;
+  background-color: rgb(21, 32, 63);
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 3px solid #8899A6;
+  color:white;
+  outline: none;
+  padding: 5px;
+
+}
+
+input.password {
+  font-size: 20px;
+  background-color: rgb(21, 32, 63);
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 3px solid #8899A6;
+  color: white;
+  outline: none;
+  padding: 5px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #8899A6;
+}
+
+.password:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgb(29, 161, 242);
+}
+
+.username:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgb(29, 161, 242);
+}
+
+input.username:focus {
+  border-bottom: 3px solid rgb(29,161,242);
+}
+
+input.password:focus {
+  border-bottom: 3px solid rgb(29,161,242);
+}
+
+button {
+  border-radius: 50px;
+  border: 2px solid rgb(29, 161, 242);
+  background-color: rgb(21, 32, 43);
+  font-size: 20px;
+  padding: 10px;
+  color: rgb(29, 161, 242);
+}
+
+button:hover {
+  background-color: rgb(21, 32, 73);
+}

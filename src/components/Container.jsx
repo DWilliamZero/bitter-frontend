@@ -52,9 +52,8 @@ class Container extends React.Component {
     return (
       <>
         <div className='container'>
-          <div className='left-bottom'> left light blue</div>
+          <div className='left-bottom'></div>
           <div className='right-top'>
-            right dark blue
             {this.state.user == null ?
               <Login handleChange={this.handleChange} handleLogin={this.handleLogin} />
               :
