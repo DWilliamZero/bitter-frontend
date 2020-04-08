@@ -1,7 +1,7 @@
 import React from 'react';
+import LandingPage from './LandingPage';
+import Feed from './Feed';
 import Footer from './Footer';
-import Login from './Login';
-import Logout from './Logout';
 import { login, verifyUser, logOut } from '../services/api-helper';
 
 
@@ -11,7 +11,9 @@ class Container extends React.Component {
     this.state = {
       user: null,
       username: '',
-      password: ''
+      password: '',
+      content: '',
+      modal: false
     }
   }
 
@@ -26,6 +28,7 @@ class Container extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+
   }
 
   handleLogin = async (e) => {
@@ -37,7 +40,7 @@ class Container extends React.Component {
       username: '',
       password: ''
     });
-    console.log(currentUser)
+    console.log(this.state.user)
   }
 
   handleLogout = () => {
@@ -48,19 +51,42 @@ class Container extends React.Component {
     })
   }
 
+  handleNewPost = () => {
+    console.log('new post button was clicked!')
+    this.setState({
+      modal: true
+    })
+  }
+
+  handlePostSubmit = (e) => {
+    e.preventDefault()
+    console.log('Post Submit button was clicked!')
+    this.setState({
+      modal: false
+    })
+  }
+
   render() {
     return (
       <>
-        <div className='container'>
-          <div className='left-bottom'></div>
-          <div className='right-top'>
-            {this.state.user == null ?
-              <Login handleChange={this.handleChange} handleLogin={this.handleLogin} />
-              :
-              <Logout handleLogout={this.handleLogout} />
-            }
-          </div>
-        </div>
+        {this.state.user === null ?
+          <LandingPage
+            user={this.state.user}
+            username={this.state.username}
+            password={this.state.password}
+            handleChange={this.handleChange}
+            handleLogin={this.handleLogin}
+          />
+          :
+          <Feed
+            user={this.state.user}
+            content={this.state.content}
+            modal={this.state.modal}
+            handlePostSubmit={this.handlePostSubmit}
+            handleLogout={this.handleLogout}
+            handleNewPost={this.handleNewPost}
+          />
+        }
         <Footer />
       </>
     )
