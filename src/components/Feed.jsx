@@ -10,8 +10,12 @@ function Feed(props) {
       <div className={props.modal ? 'overlay-on' : 'overlay-off'}></div>
       <NewPost
         content={props.content}
+        image_name={props.image_name}
         modal={props.modal}
+        handleChange={props.handleChange}
+        handleUpload={props.handleUpload}
         handlePostSubmit={props.handlePostSubmit}
+        handleCloseModal={props.handleCloseModal}
       />
       <div className='feed-page'>
         <div className='feed-left'>

@@ -8,7 +8,7 @@
   width: 100%;
 }
 
-.left-bottom {
+.left {
   background-color: rgb(113, 201, 248);
   background-image: url('https://dwilliamzero.com/zero-cloud/bitter-logo.png');
   background-repeat: no-repeat;
@@ -17,13 +17,101 @@
   width: 50%;
 }
 
-.right-top {
+.right {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-content: center;
   background-color:rgb(21, 32, 43);
   color: #8899A6;
   width: 50%;
   padding: 15px;
+}
+.sign-up {
+  color: white;
+  margin: 25% 25%;
+  width: 50%;
+}
+
+img#small-logo-1 {
+  margin-bottom: 20px;
+  width: 50px;
+}
+
+.join-today {
+  margin: 20px 0;
+}
+
+button#join-btn {
+  background-color: rgb(113, 201, 248);
+  color: white;
+  border: none;
+  margin: 10px 0;
+  width: 100%;
+}
+
+button#join-btn:hover {
+  background-color: #8899A6;
+}
+
+.signup-modal-on {
+  display: grid;
+  position: fixed;
+  left: 35%;
+  top: 5%;
+  /* border: 2px solid #8899A6; */
+  border-radius: 15px;
+  background-color: rgb(21, 32, 43);
+  box-shadow: 5px 5px 8px black;
+  height: 500px;
+  margin: 200px auto;
+  width: 30%;
+  z-index: 2;
+}
+
+.signup-modal-off {
+display: none
+}
+
+img#small-logo-2 {
+  margin: 20px auto;
+  width: 70px;
+}
+
+.signup-form-text {
+  margin: 10px auto;
+  width: 80%;
+}
+.input-text {
+  font-size: 30px;
+  background: rgb(21, 32, 63);
+  border: none;
+  border-bottom: 3px solid #8899A6;
+  box-sizing: border-box;
+  color: white;
+  outline: none;
+  margin:10px auto;
+  width: 80%;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+button#new-account-btn {
+  background-color: rgb(113, 201, 248);
+  color: white;
+  border: none;
+  margin: 30px auto;
+  width: 80%;
+}
+
+button#new-account-btn:hover {
+  background-color: #8899A6;
+}
+
+.login {
+  margin: 0 auto;
 }
 
 .footer {
@@ -77,6 +165,10 @@ input.password {
   color: rgb(29, 161, 242);
 }
 
+.input-text:focus {
+  border-bottom: 3px solid rgb(29,161,242);
+}
+
 input.username:focus {
   border-bottom: 3px solid rgb(29,161,242);
 }
@@ -84,6 +176,7 @@ input.username:focus {
 input.password:focus {
   border-bottom: 3px solid rgb(29,161,242);
 }
+
 
 button {
   border-radius: 50px;
@@ -96,7 +189,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(21, 32, 73);
+  background-color: rgb(21, 32, 63);
 }
 
 .feed-page {
@@ -143,7 +236,7 @@ button:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  background-color: rgba(100, 100, 100, 0.7); /* Black background with opacity */
   z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
@@ -155,14 +248,15 @@ button:hover {
 .new-post-modal-on {
   display: grid;
   position: fixed;
-  left: 20%;
+  left: 35%;
   top: 5%;
-  border: 2px solid #8899A6;
+  /* border: 2px solid #8899A6; */
+  border-radius: 15px;
   background-color: rgb(21, 32, 63);
-  box-shadow: 2px 2px 3px black;
+  box-shadow: 5px 5px 8px black;
   height: 300px;
   margin: 200px auto;
-  width: 60%;
+  width: 30%;
   z-index: 2;
 }
 
@@ -170,12 +264,36 @@ button:hover {
 display: none
 }
 
-.modal-form {
-  margin: 30px auto;
+.close {
+  color: #8899A6;
+  font-size: 20px;
+  position: relative;
+  left: 92%;
+  top: 3%;
+}
+
+.close:hover {
+  color: white;
+  cursor: pointer;
+}
+
+textarea {
+  background-color: rgb(21, 32, 63);
+  border:  black;
+  color: white;
+  font-size: 20px;
+  resize: none;
+  outline: none;
+  margin: 20px;
 }
 
 .modal-btn {
-  margin: 50px;
+  margin: 10px 20px;
+}
+
+.img-uploader {
+  font-size: 17px;
+  color: rgb(29, 161, 242);
 }
 
 .feed-card-right {
