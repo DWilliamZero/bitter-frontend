@@ -2,9 +2,9 @@ import React from 'react';
 
 function NewPost(props) {
   return (
-    <div className={props.modal ? 'new-post-modal-on' : 'new-post-modal-off'}>
+    <div className={props.post_modal ? 'new-post-modal-on' : 'new-post-modal-off'}>
       <form className='modal-form' onSubmit={props.handlePostSubmit}>
-        <span className='close' onClick={props.handleCloseModal}>X</span>
+        <span className='close' id='post_modal' onClick={props.handleModal}>X</span>
         <textarea required
           rows='6'
           cols='45'
@@ -21,6 +21,7 @@ function NewPost(props) {
           name='image_name'
           value={props.image_name}
           onChange={props.handleUpload} />
+        <div className='char-count'>chars left: {props.char_count}</div>
       </form>
     </div >
   )

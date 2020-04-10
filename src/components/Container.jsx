@@ -3,7 +3,15 @@ import axios from 'axios';
 import LandingPage from './LandingPage';
 import Feed from './Feed';
 import Footer from './Footer';
-import { login, verifyUser, logOut, createNewUserPost, createNewUser } from '../services/api-helper';
+
+import {
+  login,
+  verifyUser,
+  logOut,
+  createNewUserPost,
+  createNewUser,
+  updateUserById
+} from '../services/api-helper';
 
 
 class Container extends React.Component {
@@ -13,27 +21,39 @@ class Container extends React.Component {
       user: null,
       username: '',
       password: '',
+      blurb: '',
+      email: '',
       content: '',
       image_name: '',
       image_url: '',
       newUsername: '',
       newEmail: '',
       newPassword: '',
-      modal: false,
-      signup_modal: false
+      char_count: 140,
+      post_modal: false,
+      signup_modal: false,
+      edit_modal: false
     }
   }
 
   componentDidMount = async () => {
     const currentUser = await verifyUser();
     if (currentUser) {
-      this.setState({ user: currentUser })
+      this.setState({
+        user: currentUser,
+        blurb: currentUser.blurb,
+        email: currentUser.email,
+        image_url: currentUser.image_url
+      })
     }
   }
 
   handleChange = (e) => {
+    //console.log(e.target.value)
+    const newCount = this.state.char_count - 1
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      char_count: newCount
     })
   }
 
@@ -52,18 +72,6 @@ class Container extends React.Component {
     logOut();
     this.setState({
       user: null
-    })
-  }
-
-  handleNewSignUp = () => {
-    this.setState({
-      signup_modal: true
-    })
-  }
-
-  closeSignupModal = () => {
-    this.setState({
-      signup_modal: false
     })
   }
 
@@ -86,16 +94,19 @@ class Container extends React.Component {
     })
   }
 
-  handleNewPost = () => {
+  handleModal = (e) => {
+    //console.log(this.state.avatar)
+    const modal_name = e.target.id
+    const newState = !this.state[modal_name]
     this.setState({
-      modal: true
+      [modal_name]: newState,
+      char_count: 140,
+      content: '',
+      newUsername: '',
+      newEmail: '',
+      newPassword: ''
     })
-  }
-
-  handleCloseModal = () => {
-    this.setState({
-      modal: false
-    })
+    console.log(this.state.newEmail)
   }
 
   handleUpload = (e) => {
@@ -105,10 +116,13 @@ class Container extends React.Component {
     })
 
     const image = e.target.files[0]
+    let randPrefix = Math.random().toString(36).substring(2);
+    const imgName = randPrefix + '_' + image.name
     const data = new FormData()
-    data.append('file', image, image.name)
+    data.append('file', image, imgName)
 
-    const imageURL = `https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/${image.name}?alt=media`
+
+    const imageURL = `https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/${imgName}?alt=media`
 
     axios.post(`https://us-central1-bitter-d2094.cloudfunctions.net/uploadFile`, data)
       .then(res => {
@@ -119,17 +133,42 @@ class Container extends React.Component {
       image_url: imageURL
     })
     console.log(imageURL)
+
   }
 
   handlePostSubmit = (e) => {
     e.preventDefault()
-    const data = { content: this.state.content, image_url: this.state.image_url }
+    const data = {
+      username: this.state.username,
+      image_url: this.state.image_url
+    }
     const newPost = createNewUserPost(this.state.user.id, data)
     console.log(newPost)
     this.setState({
-      modal: false,
+      post_modal: false,
       content: ''
     })
+  }
+
+  handleEditUser = async (e) => {
+    e.preventDefault()
+    const data = {
+      email: this.state.email,
+      password: 'someDummyPassword',  //required to pass strong params, value not important.
+      blurb: this.state.blurb,
+      image_url: this.state.image_url,
+    }
+    console.log(data)
+    console.log(this.state.user.id)
+
+    const editUser = updateUserById(this.state.user.id, data)
+
+    console.log(editUser)
+
+    this.setState({
+      edit_modal: false
+    })
+    window.location.reload();
   }
 
   render() {
@@ -142,26 +181,30 @@ class Container extends React.Component {
             password={this.state.password}
             handleChange={this.handleChange}
             handleLogin={this.handleLogin}
+            handleModal={this.handleModal}
             signup_modal={this.state.signup_modal}
-            newUsername={this.newUsername}
-            newEmail={this.newEmail}
-            newPassword={this.newPassword}
+            newUsername={this.state.newUsername}
+            newEmail={this.state.newEmail}
+            newPassword={this.state.newPassword}
             handleSignup={this.handleSignup}
-            handleNewSignUp={this.handleNewSignUp}
-            closeSignupModal={this.closeSignupModal}
           />
           :
           <Feed
             user={this.state.user}
-            modal={this.state.modal}
+            blurb={this.state.blurb}
+            email={this.state.email}
+            image_url={this.state.image_url}
             content={this.state.content}
+            char_count={this.state.char_count}
+            edit_modal={this.state.edit_modal}
+            post_modal={this.state.post_modal}
             image_name={this.state.image_name}
+            handleModal={this.handleModal}
             handleChange={this.handleChange}
             handleUpload={this.handleUpload}
+            handleEditUser={this.handleEditUser}
             handlePostSubmit={this.handlePostSubmit}
             handleLogout={this.handleLogout}
-            handleNewPost={this.handleNewPost}
-            handleCloseModal={this.handleCloseModal}
           />
         }
         <Footer />

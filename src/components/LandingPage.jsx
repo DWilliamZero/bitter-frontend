@@ -18,10 +18,9 @@ function LandingPage(props) {
           newUsername={props.newUsername}
           newEmail={props.newEmail}
           newPassword={props.newPassword}
+          handleModal={props.handleModal}
           handleChange={props.handleChange}
           handleSignup={props.handleSignup}
-          handleNewSignUp={props.handleNewSignUp}
-          closeSignupModal={props.closeSignupModal}
         />
       </div>
     </div>

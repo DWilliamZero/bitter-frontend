@@ -41,7 +41,7 @@ img#small-logo-1 {
   margin: 20px 0;
 }
 
-button#join-btn {
+button#signup_modal {
   background-color: rgb(113, 201, 248);
   color: white;
   border: none;
@@ -49,7 +49,7 @@ button#join-btn {
   width: 100%;
 }
 
-button#join-btn:hover {
+button#signup_modal:hover {
   background-color: #8899A6;
 }
 
@@ -177,7 +177,6 @@ input.password:focus {
   border-bottom: 3px solid rgb(29,161,242);
 }
 
-
 button {
   border-radius: 50px;
   border: 2px solid rgb(29, 161, 242);
@@ -195,7 +194,7 @@ button:hover {
 .feed-page {
   display: flex;
   flex-direction: row;
-  color: white;
+  color: rgb(29,161,242);
   font-size: 20px;
   width: 100%;
 }
@@ -207,8 +206,43 @@ button:hover {
   width: 25%;
 }
 
+img#avatar {
+  width: 125px;
+  height: 125px;
+  object-fit: contain;
+  object-fit: cover;
+  border: 5px solid black;
+  border-radius: 50%;
+  background-color: white;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.blurb {
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 20px 10px;
+}
+
+.follow-count {
+  color: rgb(29,161,242);
+  margin: 10px;
+}
+
+h4.follows {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.edit-user {
+  margin: 10px;
+  color: rgb(29,161,242);
+  text-decoration: underline;
+}
+
 .new-post-btn {
-  margin: 50px;
+  margin: 25px;
 }
 
 .feed-card {
@@ -250,7 +284,6 @@ button:hover {
   position: fixed;
   left: 35%;
   top: 5%;
-  /* border: 2px solid #8899A6; */
   border-radius: 15px;
   background-color: rgb(21, 32, 63);
   box-shadow: 5px 5px 8px black;
@@ -262,6 +295,77 @@ button:hover {
 
 .new-post-modal-off {
 display: none
+}
+
+.edit-modal-on {
+  display: grid;
+  position: fixed;
+  left: 35%;
+  top: 0;
+  border-radius: 15px;
+  background-color: rgb(21, 32, 63);
+  box-shadow: 5px 5px 8px black;
+  height: 600px;
+  margin: 200px auto;
+  width: 30%;
+  z-index: 2;
+}
+
+.edit-modal-off {
+display: none
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  color: rgb(29, 161, 242);
+  margin: 20px;
+  width: 80%;
+}
+
+.edit-title {
+  margin: 30px auto;
+}
+
+textarea#edit-blurb {
+  background-color: rgb(21, 32, 63);
+  border:  black;
+  color: white;
+  font-size: 20px;
+  resize: none;
+  outline: none;
+  margin: 20px;
+}
+
+input#edit-email {
+  background-color: rgb(21, 32, 63);
+  border:  black;
+  color: white;
+  font-size: 20px;
+  resize: none;
+  outline: none;
+  margin:20px;
+}
+
+input#edit-avatar {
+  margin: 20px;
+}
+
+.edit-modal-btn {
+  margin: 10px;
+}
+
+.edit-close {
+  color: #8899A6;
+  font-size: 20px;
+  position: relative;
+  left: 100%;
+  top: 0%;
+}
+
+.edit-close:hover {
+  color: white;
+  cursor: pointer;
 }
 
 .close {
@@ -294,6 +398,15 @@ textarea {
 .img-uploader {
   font-size: 17px;
   color: rgb(29, 161, 242);
+  margin: 20px;
+  width: 200px;
+}
+
+.char-count {
+  display: inline;
+  color: white;
+  font-size: 20px;
+  margin: 0;
 }
 
 .feed-card-right {

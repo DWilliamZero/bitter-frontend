@@ -8,16 +8,16 @@ function SignUpButton(props) {
       <h1>Share Your Dumb Opinions With the World!</h1>
       <div className='join-today'>
         <h4>Join Bitter Today!</h4>
-        <button id='join-btn' onClick={props.handleNewSignUp}>Sign up</button>
+        <button id='signup_modal' onClick={props.handleModal}>Sign up</button>
       </div>
       <SignUp
         newUsername={props.newUsername}
         newEmail={props.newEmail}
         newPassword={props.newPassword}
+        handleModal={props.handleModal}
         handleChange={props.handleChange}
         handleSignup={props.handleSignup}
         signup_modal={props.signup_modal}
-        closeSignupModal={props.closeSignupModal}
       />
     </div >
   )
