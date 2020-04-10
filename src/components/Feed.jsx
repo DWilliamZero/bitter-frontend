@@ -18,7 +18,17 @@ function Feed(props) {
         handleUpload={props.handleUpload}
         handlePostSubmit={props.handlePostSubmit}
       />
-      <EditUser handleModal={props.handleModal} edit_modal={props.edit_modal} />
+      <EditUser
+        user={props.user}
+        blurb={props.blurb}
+        email={props.email}
+        image_url={props.image_url}
+        edit_modal={props.edit_modal}
+        handleModal={props.handleModal}
+        handleChange={props.handleChange}
+        handleUpload={props.handleUpload}
+        handleEditUser={props.handleEditUser}
+      />
       <div className='feed-page'>
         <div className='feed-left'>
           <img id='avatar' src='https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/bitter-logo.png?alt=media' alt='Avatar of User' />

@@ -2,25 +2,38 @@ import React from 'react';
 
 function EditUser(props) {
   return (
-    <div className={props.edit_modal ? 'new-post-modal-on' : 'new-post-modal-off'}>
-      <form className='modal-form' onSubmit={props.handlePostSubmit}>
-        <span className='close' id='edit_modal' onClick={props.handleModal}>X</span>
+    <div className={props.edit_modal ? 'edit-modal-on' : 'edit-modal-off'}>
+      <form className='edit-form' onSubmit={props.handleEditUser}>
+        <span className='edit-close' id='edit_modal' onClick={props.handleModal}>X</span>
+        <div className='edit-title'><h1>Edit Account:</h1></div>
+        <h3>Update Blurb:</h3>
         <textarea required
-          rows='6'
+          id='edit-blurb'
+          rows='3'
           cols='45'
           type='text'
-          name='content'
-          value={props.content}
+          name='blurb'
+          value={props.blurb}
           onChange={props.handleChange}
-          placeholder='Share A Dumb Opinion Here' maxLength='140' />
-        <button className='modal-btn' type='submit'>Post Bit</button>
+          placeholder='Add A Blurb Here' maxLength='75' />
+        <h3>Update Email: {props.email}</h3>
+        <input required
+          id='edit-email'
+          type="email"
+          name="email"
+          value={props.email}
+          onChange={props.handleChange}
+          placeholder='Email'
+        />
+        <h3>Update Image:</h3>
         <input
-          id='file'
+          id='edit-avatar'
           className='img-uploader'
           type='file'
-          name='image_name'
-          value={props.image_name}
+          name='avatar'
+          value={props.someBullShitNameThatDoesntExist}
           onChange={props.handleUpload} />
+        <button className='edit-modal-btn' type='submit'>Update</button>
       </form>
     </div >
   )

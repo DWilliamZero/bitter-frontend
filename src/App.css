@@ -286,6 +286,77 @@ img#avatar {
 display: none
 }
 
+.edit-modal-on {
+  display: grid;
+  position: fixed;
+  left: 35%;
+  top: 0;
+  border-radius: 15px;
+  background-color: rgb(21, 32, 63);
+  box-shadow: 5px 5px 8px black;
+  height: 600px;
+  margin: 200px auto;
+  width: 30%;
+  z-index: 2;
+}
+
+.edit-modal-off {
+display: none
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  color: rgb(29, 161, 242);
+  margin: 20px;
+  width: 80%;
+}
+
+.edit-title {
+  margin: 30px auto;
+}
+
+textarea#edit-blurb {
+  background-color: rgb(21, 32, 63);
+  border:  black;
+  color: white;
+  font-size: 20px;
+  resize: none;
+  outline: none;
+  margin: 20px;
+}
+
+input#edit-email {
+  background-color: rgb(21, 32, 63);
+  border:  black;
+  color: white;
+  font-size: 20px;
+  resize: none;
+  outline: none;
+  margin:20px;
+}
+
+input#edit-avatar {
+  margin: 20px;
+}
+
+.edit-modal-btn {
+  margin: 10px;
+}
+
+.edit-close {
+  color: #8899A6;
+  font-size: 20px;
+  position: relative;
+  left: 100%;
+  top: 0%;
+}
+
+.edit-close:hover {
+  color: white;
+  cursor: pointer;
+}
+
 .close {
   color: #8899A6;
   font-size: 20px;
