@@ -3,7 +3,7 @@ import React from 'react';
 function NewPostButton(props) {
   return (
     <div className='new-post-btn'>
-      <button onClick={props.handleNewPost}>+ New Post</button>
+      <button id='post_modal' onClick={props.handleModal}>+ New Post</button>
     </div>
   )
 }

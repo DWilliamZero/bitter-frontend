@@ -19,8 +19,9 @@ class Container extends React.Component {
       newUsername: '',
       newEmail: '',
       newPassword: '',
-      modal: false,
-      signup_modal: false
+      post_modal: false,
+      signup_modal: false,
+      edit_modal: false
     }
   }
 
@@ -55,18 +56,6 @@ class Container extends React.Component {
     })
   }
 
-  handleNewSignUp = () => {
-    this.setState({
-      signup_modal: true
-    })
-  }
-
-  closeSignupModal = () => {
-    this.setState({
-      signup_modal: false
-    })
-  }
-
   handleSignup = async (e) => {
     e.preventDefault();
     const { newUsername, newEmail, newPassword } = this.state
@@ -86,15 +75,12 @@ class Container extends React.Component {
     })
   }
 
-  handleNewPost = () => {
+  handleModal = (e) => {
+    //console.log(e.target.id)
+    const modal_name = e.target.id
+    const newState = !this.state[modal_name]
     this.setState({
-      modal: true
-    })
-  }
-
-  handleCloseModal = () => {
-    this.setState({
-      modal: false
+      [modal_name]: newState
     })
   }
 
@@ -107,8 +93,9 @@ class Container extends React.Component {
     const image = e.target.files[0]
     const data = new FormData()
     data.append('file', image, image.name)
+    let randPrefix = Math.random().toString(36).substring(2);
 
-    const imageURL = `https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/${image.name}?alt=media`
+    const imageURL = `https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/${randPrefix}_${image.name}?alt=media`
 
     axios.post(`https://us-central1-bitter-d2094.cloudfunctions.net/uploadFile`, data)
       .then(res => {
@@ -119,6 +106,7 @@ class Container extends React.Component {
       image_url: imageURL
     })
     console.log(imageURL)
+
   }
 
   handlePostSubmit = (e) => {
@@ -127,7 +115,7 @@ class Container extends React.Component {
     const newPost = createNewUserPost(this.state.user.id, data)
     console.log(newPost)
     this.setState({
-      modal: false,
+      post_modal: false,
       content: ''
     })
   }
@@ -142,26 +130,25 @@ class Container extends React.Component {
             password={this.state.password}
             handleChange={this.handleChange}
             handleLogin={this.handleLogin}
+            handleModal={this.handleModal}
             signup_modal={this.state.signup_modal}
             newUsername={this.newUsername}
             newEmail={this.newEmail}
             newPassword={this.newPassword}
             handleSignup={this.handleSignup}
-            handleNewSignUp={this.handleNewSignUp}
-            closeSignupModal={this.closeSignupModal}
           />
           :
           <Feed
             user={this.state.user}
-            modal={this.state.modal}
+            edit_modal={this.state.edit_modal}
+            post_modal={this.state.post_modal}
             content={this.state.content}
             image_name={this.state.image_name}
+            handleModal={this.handleModal}
             handleChange={this.handleChange}
             handleUpload={this.handleUpload}
             handlePostSubmit={this.handlePostSubmit}
             handleLogout={this.handleLogout}
-            handleNewPost={this.handleNewPost}
-            handleCloseModal={this.handleCloseModal}
           />
         }
         <Footer />

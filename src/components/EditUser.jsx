@@ -1,10 +1,10 @@
 import React from 'react';
 
-function NewPost(props) {
+function EditUser(props) {
   return (
-    <div className={props.post_modal ? 'new-post-modal-on' : 'new-post-modal-off'}>
+    <div className={props.edit_modal ? 'new-post-modal-on' : 'new-post-modal-off'}>
       <form className='modal-form' onSubmit={props.handlePostSubmit}>
-        <span className='close' id='post_modal' onClick={props.handleModal}>X</span>
+        <span className='close' id='edit_modal' onClick={props.handleModal}>X</span>
         <textarea required
           rows='6'
           cols='45'
@@ -26,4 +26,4 @@ function NewPost(props) {
   )
 }
 
-export default NewPost;
+export default EditUser;

@@ -41,7 +41,7 @@ img#small-logo-1 {
   margin: 20px 0;
 }
 
-button#join-btn {
+button#signup_modal {
   background-color: rgb(113, 201, 248);
   color: white;
   border: none;
@@ -49,7 +49,7 @@ button#join-btn {
   width: 100%;
 }
 
-button#join-btn:hover {
+button#signup_modal:hover {
   background-color: #8899A6;
 }
 
@@ -207,8 +207,30 @@ button:hover {
   width: 25%;
 }
 
+img#avatar {
+  width: 125px;
+  height: 125px;
+  object-fit: contain;
+  border: 5px solid black;
+  border-radius: 50%;
+  background-color: white;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.follow-count {
+  color: rgb(29,161,242);
+  margin: 10px;
+}
+
+.my-account {
+  margin:10px;
+  color: rgb(29,161,242);
+  text-decoration: underline;
+}
+
 .new-post-btn {
-  margin: 50px;
+  margin: 25px;
 }
 
 .feed-card {
