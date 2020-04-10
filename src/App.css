@@ -177,7 +177,6 @@ input.password:focus {
   border-bottom: 3px solid rgb(29,161,242);
 }
 
-
 button {
   border-radius: 50px;
   border: 2px solid rgb(29, 161, 242);
@@ -195,7 +194,7 @@ button:hover {
 .feed-page {
   display: flex;
   flex-direction: row;
-  color: white;
+  color: rgb(29,161,242);
   font-size: 20px;
   width: 100%;
 }
@@ -211,6 +210,7 @@ img#avatar {
   width: 125px;
   height: 125px;
   object-fit: contain;
+  object-fit: cover;
   border: 5px solid black;
   border-radius: 50%;
   background-color: white;
@@ -218,13 +218,25 @@ img#avatar {
   margin-bottom: 0;
 }
 
+.blurb {
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 20px 10px;
+}
+
 .follow-count {
   color: rgb(29,161,242);
   margin: 10px;
 }
 
-.my-account {
-  margin:10px;
+h4.follows {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.edit-user {
+  margin: 10px;
   color: rgb(29,161,242);
   text-decoration: underline;
 }
@@ -272,7 +284,6 @@ img#avatar {
   position: fixed;
   left: 35%;
   top: 5%;
-  /* border: 2px solid #8899A6; */
   border-radius: 15px;
   background-color: rgb(21, 32, 63);
   box-shadow: 5px 5px 8px black;
@@ -387,6 +398,15 @@ textarea {
 .img-uploader {
   font-size: 17px;
   color: rgb(29, 161, 242);
+  margin: 20px;
+  width: 200px;
+}
+
+.char-count {
+  display: inline;
+  color: white;
+  font-size: 20px;
+  margin: 0;
 }
 
 .feed-card-right {

@@ -29,6 +29,7 @@ class Container extends React.Component {
       newUsername: '',
       newEmail: '',
       newPassword: '',
+      char_count: 140,
       post_modal: false,
       signup_modal: false,
       edit_modal: false
@@ -49,8 +50,10 @@ class Container extends React.Component {
 
   handleChange = (e) => {
     //console.log(e.target.value)
+    const newCount = this.state.char_count - 1
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      char_count: newCount
     })
   }
 
@@ -96,8 +99,14 @@ class Container extends React.Component {
     const modal_name = e.target.id
     const newState = !this.state[modal_name]
     this.setState({
-      [modal_name]: newState
+      [modal_name]: newState,
+      char_count: 140,
+      content: '',
+      newUsername: '',
+      newEmail: '',
+      newPassword: ''
     })
+    console.log(this.state.newEmail)
   }
 
   handleUpload = (e) => {
@@ -107,11 +116,13 @@ class Container extends React.Component {
     })
 
     const image = e.target.files[0]
-    const data = new FormData()
-    data.append('file', image, image.name)
     let randPrefix = Math.random().toString(36).substring(2);
+    const imgName = randPrefix + '_' + image.name
+    const data = new FormData()
+    data.append('file', image, imgName)
 
-    const imageURL = `https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/${randPrefix}_${image.name}?alt=media`
+
+    const imageURL = `https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/${imgName}?alt=media`
 
     axios.post(`https://us-central1-bitter-d2094.cloudfunctions.net/uploadFile`, data)
       .then(res => {
@@ -157,6 +168,7 @@ class Container extends React.Component {
     this.setState({
       edit_modal: false
     })
+    window.location.reload();
   }
 
   render() {
@@ -171,9 +183,9 @@ class Container extends React.Component {
             handleLogin={this.handleLogin}
             handleModal={this.handleModal}
             signup_modal={this.state.signup_modal}
-            newUsername={this.newUsername}
-            newEmail={this.newEmail}
-            newPassword={this.newPassword}
+            newUsername={this.state.newUsername}
+            newEmail={this.state.newEmail}
+            newPassword={this.state.newPassword}
             handleSignup={this.handleSignup}
           />
           :
@@ -183,6 +195,7 @@ class Container extends React.Component {
             email={this.state.email}
             image_url={this.state.image_url}
             content={this.state.content}
+            char_count={this.state.char_count}
             edit_modal={this.state.edit_modal}
             post_modal={this.state.post_modal}
             image_name={this.state.image_name}

@@ -21,6 +21,7 @@ function NewPost(props) {
           name='image_name'
           value={props.image_name}
           onChange={props.handleUpload} />
+        <div className='char-count'>chars left: {props.char_count}</div>
       </form>
     </div >
   )

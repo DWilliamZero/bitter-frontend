@@ -16,7 +16,7 @@ function EditUser(props) {
           value={props.blurb}
           onChange={props.handleChange}
           placeholder='Add A Blurb Here' maxLength='75' />
-        <h3>Update Email: {props.email}</h3>
+        <h3>Update Email:</h3>
         <input required
           id='edit-email'
           type="email"
