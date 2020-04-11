@@ -41,14 +41,18 @@ function Feed(props) {
           <h4 className='follows'>Followers: <span className='follow-count'>{follower_count}</span> Following: <span className='follow-count'>{followee_count}</span></h4>
           <NewPostButton handleModal={props.handleModal} />
         </div>
-        <div className='feed-card'>
-          <div className='feed-card-title'>
+        <div className='feed-center'>
+          <div className='feed-center-title'>
             <div className='feed-buttons'>
               <button onClick={props.changeFeedContent} name='feed_active' className={props.feed_active ? 'my-feed-btn-active' : 'my-feed-btn'}>Feed</button>
               <button onClick={props.changeFeedContent} name='followers_active' className={props.followers_active ? 'followers-btn-active' : 'followers-btn'}>Followers</button>
               <button onClick={props.changeFeedContent} name='following_active' className={props.following_active ? 'following-btn-active' : 'following-btn'}>Following</button></div>
           </div>
-          {props.feed_active ? <FeedCard /> : ''}
+          {props.feed_active ?
+            <FeedCard
+              posts={props.posts}
+            />
+            : ''}
           {props.followers_active ? <FollowersCard /> : ''}
           {props.following_active ? <FollowingCard /> : ''}
         </div>

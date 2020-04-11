@@ -10,7 +10,8 @@ import {
   logOut,
   createNewUserPost,
   createNewUser,
-  updateUserById
+  updateUserById,
+  getAllPosts
 } from '../services/api-helper';
 
 
@@ -19,6 +20,7 @@ class Container extends React.Component {
     super()
     this.state = {
       user: null,
+      posts: null,
       username: '',
       password: '',
       blurb: '',
@@ -42,8 +44,10 @@ class Container extends React.Component {
   componentDidMount = async () => {
     const currentUser = await verifyUser();
     if (currentUser) {
+      const allPosts = await getAllPosts()
       this.setState({
         user: currentUser,
+        posts: allPosts,
         blurb: currentUser.blurb,
         email: currentUser.email,
         image_url: currentUser.image_url
@@ -142,7 +146,7 @@ class Container extends React.Component {
   handlePostSubmit = (e) => {
     e.preventDefault()
     const data = {
-      username: this.state.username,
+      content: this.state.content,
       image_url: this.state.image_url
     }
     const newPost = createNewUserPost(this.state.user.id, data)
@@ -151,6 +155,7 @@ class Container extends React.Component {
       post_modal: false,
       content: ''
     })
+    window.location.reload();
   }
 
   handleEditUser = async (e) => {
@@ -210,6 +215,7 @@ class Container extends React.Component {
             email={this.state.email}
             image_url={this.state.image_url}
             content={this.state.content}
+            posts={this.state.posts}
             char_count={this.state.char_count}
             edit_modal={this.state.edit_modal}
             post_modal={this.state.post_modal}

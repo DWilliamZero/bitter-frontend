@@ -65,8 +65,13 @@ export const deleteUserById = async (id) => {
 //===========  Posts  =============
 //=================================
 
+export const getAllPosts = async () => {
+  const res = await api.get(`/posts`)
+  return res.data;
+}
+
 export const getAllPostsByUserId = async (userId) => {
-  const res = await api.get(`/users/${userId}`)
+  const res = await api.get(`/users/${userId}/posts`)
   return res.data;
 }
 
