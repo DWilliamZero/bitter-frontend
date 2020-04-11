@@ -254,11 +254,39 @@ h4.follows {
 }
 
 .feed-card-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   border-bottom: 1px solid #8899A6;
-  height: 70px;
+  height: 200px;
   color: white;
   font-size: 20px;
-  padding: 10px;
+  padding: 0;
+}
+
+.feed-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+button.my-feed-btn, button.followers-btn, button.following-btn {
+  border: none;
+  border-radius: 0;
+  padding: 5px;
+  width: 33%;
+}
+
+button.my-feed-btn:active, button.followers-btn:active, button.following-btn:active {
+  border-bottom: 2px solid rgb(29, 161, 242);
+}
+
+button.my-feed-btn-active, button.followers-btn-active, button.following-btn-active {
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid rgb(29, 161, 242);
+  padding: 5px;
+  width: 33%;
 }
 
 .overlay-on {

@@ -30,6 +30,9 @@ class Container extends React.Component {
       newEmail: '',
       newPassword: '',
       char_count: 140,
+      feed_active: true,
+      followers_active: false,
+      following_active: false,
       post_modal: false,
       signup_modal: false,
       edit_modal: false
@@ -50,7 +53,7 @@ class Container extends React.Component {
 
   handleChange = (e) => {
     //console.log(e.target.value)
-    const newCount = this.state.char_count - 1
+    const newCount = 140 - e.target.value.length
     this.setState({
       [e.target.name]: e.target.value,
       char_count: newCount
@@ -171,6 +174,18 @@ class Container extends React.Component {
     window.location.reload();
   }
 
+  changeFeedContent = (e) => {
+    this.setState({
+      feed_active: false,
+      followers_active: false,
+      following_active: false
+    })
+    this.setState({
+      [e.target.name]: true
+    })
+  }
+
+
   render() {
     return (
       <>
@@ -199,12 +214,16 @@ class Container extends React.Component {
             edit_modal={this.state.edit_modal}
             post_modal={this.state.post_modal}
             image_name={this.state.image_name}
+            feed_active={this.state.feed_active}
+            followers_active={this.state.followers_active}
+            following_active={this.state.following_active}
             handleModal={this.handleModal}
             handleChange={this.handleChange}
             handleUpload={this.handleUpload}
             handleEditUser={this.handleEditUser}
             handlePostSubmit={this.handlePostSubmit}
             handleLogout={this.handleLogout}
+            changeFeedContent={this.changeFeedContent}
           />
         }
         <Footer />
