@@ -3,6 +3,9 @@ import Logout from './Logout';
 import NewPostButton from './NewPostButton'
 import NewPost from './NewPost'
 import EditUser from './EditUser';
+import FeedCard from './FeedCard';
+import FollowersCard from './FollowersCard';
+import FollowingCard from './FollowingCard';
 
 function Feed(props) {
   const { username, follower_count, followee_count, blurb, image_url } = props.user
@@ -36,13 +39,30 @@ function Feed(props) {
           <h1><span className='edit-user' id='edit_modal' onClick={props.handleModal}>@{username}</span></h1>
           <h4 className='blurb'>{blurb}</h4>
           <h4 className='follows'>Followers: <span className='follow-count'>{follower_count}</span> Following: <span className='follow-count'>{followee_count}</span></h4>
-          {/* <h5><span className='my-account' id='edit_modal' onClick={props.handleModal}>My Account</span></h5> */}
           <NewPostButton handleModal={props.handleModal} />
         </div>
-        <div className='feed-card'>
-          <div className='feed-card-title'>
-            <h1>My Feed</h1>
+        <div className='feed-center'>
+          <div className='feed-center-title'>
+            <div className='feed-buttons'>
+              <button onClick={props.changeFeedContent} name='feed_active' className={props.feed_active ? 'my-feed-btn-active' : 'my-feed-btn'}>Feed</button>
+              <button onClick={props.changeFeedContent} name='followers_active' className={props.followers_active ? 'followers-btn-active' : 'followers-btn'}>Followers</button>
+              <button onClick={props.changeFeedContent} name='following_active' className={props.following_active ? 'following-btn-active' : 'following-btn'}>Following</button></div>
           </div>
+          {props.feed_active ?
+            <FeedCard
+              posts={props.posts}
+            />
+            : ''}
+          {props.followers_active ?
+            <FollowersCard
+              followers={props.followers}
+            />
+            : ''}
+          {props.following_active ?
+            <FollowingCard
+              followees={props.followees}
+            />
+            : ''}
         </div>
         <div className='feed-card-right'>
           <Logout handleLogout={props.handleLogout} />

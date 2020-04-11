@@ -10,7 +10,10 @@ import {
   logOut,
   createNewUserPost,
   createNewUser,
-  updateUserById
+  updateUserById,
+  getAllPosts,
+  getFollowers,
+  getFollowees
 } from '../services/api-helper';
 
 
@@ -19,6 +22,9 @@ class Container extends React.Component {
     super()
     this.state = {
       user: null,
+      posts: null,
+      followers: null,
+      followees: null,
       username: '',
       password: '',
       blurb: '',
@@ -30,6 +36,9 @@ class Container extends React.Component {
       newEmail: '',
       newPassword: '',
       char_count: 140,
+      feed_active: true,
+      followers_active: false,
+      following_active: false,
       post_modal: false,
       signup_modal: false,
       edit_modal: false
@@ -39,8 +48,14 @@ class Container extends React.Component {
   componentDidMount = async () => {
     const currentUser = await verifyUser();
     if (currentUser) {
+      const allPosts = await getAllPosts()
+      const followers = await getFollowers(currentUser.id)
+      const followees = await getFollowees(currentUser.id)
       this.setState({
         user: currentUser,
+        posts: allPosts,
+        followers: followers,
+        followees: followees,
         blurb: currentUser.blurb,
         email: currentUser.email,
         image_url: currentUser.image_url
@@ -50,7 +65,7 @@ class Container extends React.Component {
 
   handleChange = (e) => {
     //console.log(e.target.value)
-    const newCount = this.state.char_count - 1
+    const newCount = 140 - e.target.value.length
     this.setState({
       [e.target.name]: e.target.value,
       char_count: newCount
@@ -139,7 +154,7 @@ class Container extends React.Component {
   handlePostSubmit = (e) => {
     e.preventDefault()
     const data = {
-      username: this.state.username,
+      content: this.state.content,
       image_url: this.state.image_url
     }
     const newPost = createNewUserPost(this.state.user.id, data)
@@ -148,6 +163,7 @@ class Container extends React.Component {
       post_modal: false,
       content: ''
     })
+    window.location.reload();
   }
 
   handleEditUser = async (e) => {
@@ -170,6 +186,18 @@ class Container extends React.Component {
     })
     window.location.reload();
   }
+
+  changeFeedContent = (e) => {
+    this.setState({
+      feed_active: false,
+      followers_active: false,
+      following_active: false
+    })
+    this.setState({
+      [e.target.name]: true
+    })
+  }
+
 
   render() {
     return (
@@ -195,16 +223,23 @@ class Container extends React.Component {
             email={this.state.email}
             image_url={this.state.image_url}
             content={this.state.content}
+            posts={this.state.posts}
+            followers={this.state.followers}
+            followees={this.state.followees}
             char_count={this.state.char_count}
             edit_modal={this.state.edit_modal}
             post_modal={this.state.post_modal}
             image_name={this.state.image_name}
+            feed_active={this.state.feed_active}
+            followers_active={this.state.followers_active}
+            following_active={this.state.following_active}
             handleModal={this.handleModal}
             handleChange={this.handleChange}
             handleUpload={this.handleUpload}
             handleEditUser={this.handleEditUser}
             handlePostSubmit={this.handlePostSubmit}
             handleLogout={this.handleLogout}
+            changeFeedContent={this.changeFeedContent}
           />
         }
         <Footer />
