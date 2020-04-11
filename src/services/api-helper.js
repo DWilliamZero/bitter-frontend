@@ -118,12 +118,12 @@ export const removeHate = async (userId, postId) => {
 //==========  Follows  ============
 //=================================
 
-export const getUsersFollowers = async (userId) => {
+export const getFollowers = async (userId) => {
   const res = await api.get(`/users/${userId}/followers`)
   return res.data;
 }
 
-export const getUserFollowing = async (userId) => {
+export const getFollowees = async (userId) => {
   const res = await api.get(`/users/${userId}/following`)
   return res.data;
 }

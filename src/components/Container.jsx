@@ -11,7 +11,9 @@ import {
   createNewUserPost,
   createNewUser,
   updateUserById,
-  getAllPosts
+  getAllPosts,
+  getFollowers,
+  getFollowees
 } from '../services/api-helper';
 
 
@@ -21,6 +23,8 @@ class Container extends React.Component {
     this.state = {
       user: null,
       posts: null,
+      followers: null,
+      followees: null,
       username: '',
       password: '',
       blurb: '',
@@ -45,9 +49,13 @@ class Container extends React.Component {
     const currentUser = await verifyUser();
     if (currentUser) {
       const allPosts = await getAllPosts()
+      const followers = await getFollowers(currentUser.id)
+      const followees = await getFollowees(currentUser.id)
       this.setState({
         user: currentUser,
         posts: allPosts,
+        followers: followers,
+        followees: followees,
         blurb: currentUser.blurb,
         email: currentUser.email,
         image_url: currentUser.image_url
@@ -216,6 +224,8 @@ class Container extends React.Component {
             image_url={this.state.image_url}
             content={this.state.content}
             posts={this.state.posts}
+            followers={this.state.followers}
+            followees={this.state.followees}
             char_count={this.state.char_count}
             edit_modal={this.state.edit_modal}
             post_modal={this.state.post_modal}

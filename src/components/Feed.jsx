@@ -53,8 +53,16 @@ function Feed(props) {
               posts={props.posts}
             />
             : ''}
-          {props.followers_active ? <FollowersCard /> : ''}
-          {props.following_active ? <FollowingCard /> : ''}
+          {props.followers_active ?
+            <FollowersCard
+              followers={props.followers}
+            />
+            : ''}
+          {props.following_active ?
+            <FollowingCard
+              followees={props.followees}
+            />
+            : ''}
         </div>
         <div className='feed-card-right'>
           <Logout handleLogout={props.handleLogout} />
