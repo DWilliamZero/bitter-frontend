@@ -3,6 +3,9 @@ import Logout from './Logout';
 import NewPostButton from './NewPostButton'
 import NewPost from './NewPost'
 import EditUser from './EditUser';
+import FeedCard from './FeedCard';
+import FollowersCard from './FollowersCard';
+import FollowingCard from './FollowingCard';
 
 function Feed(props) {
   const { username, follower_count, followee_count, blurb, image_url } = props.user
@@ -45,6 +48,9 @@ function Feed(props) {
               <button onClick={props.changeFeedContent} name='followers_active' className={props.followers_active ? 'followers-btn-active' : 'followers-btn'}>Followers</button>
               <button onClick={props.changeFeedContent} name='following_active' className={props.following_active ? 'following-btn-active' : 'following-btn'}>Following</button></div>
           </div>
+          {props.feed_active ? <FeedCard /> : ''}
+          {props.followers_active ? <FollowersCard /> : ''}
+          {props.following_active ? <FollowingCard /> : ''}
         </div>
         <div className='feed-card-right'>
           <Logout handleLogout={props.handleLogout} />
