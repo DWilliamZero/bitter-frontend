@@ -51,16 +51,22 @@ function Feed(props) {
           {props.feed_active ?
             <FeedCard
               posts={props.posts}
+              handleFollow={props.handleFollow}
+              handleUnfollow={props.handleUnfollow}
             />
             : ''}
           {props.followers_active ?
             <FollowersCard
               followers={props.followers}
+              handleFollow={props.handleFollow}
+              handleUnfollow={props.handleUnfollow}
             />
             : ''}
           {props.following_active ?
             <FollowingCard
               followees={props.followees}
+              handleFollow={props.handleFollow}
+              handleUnfollow={props.handleUnfollow}
             />
             : ''}
         </div>

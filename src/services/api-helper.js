@@ -134,6 +134,6 @@ export const newFollow = async (data) => {
 }
 
 export const unFollow = async (data) => {
-  const res = await api.delete(`/un-follow`, { follow: data })
+  const res = await api.delete("/unfollow", { data })  // strange error requires 'follow' to be placed data
   return res.data;
 }
