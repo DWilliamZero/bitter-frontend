@@ -35,7 +35,7 @@ function Feed(props) {
       />
       <div className='feed-page'>
         <div className='feed-left'>
-          <img id='avatar' src={image_url} srcc='https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/bitter-logo.png?alt=media' alt='Avatar of User' />
+          <img id='avatar' src={image_url} alt='Avatar of User' />
           <h1><span className='edit-user' id='edit_modal' onClick={props.handleModal}>@{username}</span></h1>
           <h4 className='blurb'>{blurb}</h4>
           <h4 className='follows'>Followers: <span className='follow-count'>{follower_count}</span> Following: <span className='follow-count'>{followee_count}</span></h4>
@@ -50,17 +50,29 @@ function Feed(props) {
           </div>
           {props.feed_active ?
             <FeedCard
+              user={props.user}
               posts={props.posts}
+              hates={props.hates}
+              followees={props.followees}
+              followers={props.followers}
+              handleHate={props.handleHate}
+              handleUnhate={props.handleUnhate}
+              handleFollow={props.handleFollow}
+              handleUnfollow={props.handleUnfollow}
             />
             : ''}
           {props.followers_active ?
             <FollowersCard
               followers={props.followers}
+              handleFollow={props.handleFollow}
+              handleUnfollow={props.handleUnfollow}
             />
             : ''}
           {props.following_active ?
             <FollowingCard
               followees={props.followees}
+              handleFollow={props.handleFollow}
+              handleUnfollow={props.handleUnfollow}
             />
             : ''}
         </div>

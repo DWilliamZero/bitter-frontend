@@ -6,7 +6,20 @@ function LandingPage(props) {
   return (
     <div className='container'>
       <div className={props.signup_modal ? 'overlay-on' : 'overlay-off'}></div>
-      <div className='left'></div>
+      <div className='left'>
+        <div className='spy'>
+          <img id='spy' src='https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/search.svg?alt=media' alt='Spy On Your Enemies' />
+          <h2>Spy on Your Enemies</h2>
+        </div>
+        <div className='make-fun'>
+          <img id='make-fun' src='https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/group.svg?alt=media' alt='Make Fun of Other People' />
+          <h2>Make Fun of Other People</h2>
+        </div>
+        <div className='share'>
+          <img id='share' src='https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/share.svg?alt=media' alt='Share Dumb Opinions' />
+          <h2>Share Your Dumb Opinions</h2>
+        </div>
+      </div>
       <div className='right'>
         <Login
           username={props.username}

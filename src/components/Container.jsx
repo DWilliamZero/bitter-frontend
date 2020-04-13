@@ -13,9 +13,15 @@ import {
   updateUserById,
   getAllPosts,
   getFollowers,
-  getFollowees
+  getFollowees,
+  newFollow,
+  unFollow,
+  newHate,
+  removeHate,
+  getAllHates
 } from '../services/api-helper';
 
+const default_image = 'https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/bitter-logo.png?alt=media'
 
 class Container extends React.Component {
   constructor() {
@@ -23,6 +29,7 @@ class Container extends React.Component {
     this.state = {
       user: null,
       posts: null,
+      hates: null,
       followers: null,
       followees: null,
       username: '',
@@ -32,6 +39,7 @@ class Container extends React.Component {
       content: '',
       image_name: '',
       image_url: '',
+      post_image_url: '',
       newUsername: '',
       newEmail: '',
       newPassword: '',
@@ -51,9 +59,11 @@ class Container extends React.Component {
       const allPosts = await getAllPosts()
       const followers = await getFollowers(currentUser.id)
       const followees = await getFollowees(currentUser.id)
+      const hates = await getAllHates()
       this.setState({
         user: currentUser,
         posts: allPosts,
+        hates: hates,
         followers: followers,
         followees: followees,
         blurb: currentUser.blurb,
@@ -61,6 +71,7 @@ class Container extends React.Component {
         image_url: currentUser.image_url
       })
     }
+    console.log(this.state.followees)
   }
 
   handleChange = (e) => {
@@ -81,6 +92,7 @@ class Container extends React.Component {
       username: '',
       password: ''
     });
+    this.componentDidMount()
   }
 
   handleLogout = () => {
@@ -90,27 +102,51 @@ class Container extends React.Component {
     })
   }
 
+  handleFollow = async (e) => {
+    e.preventDefault();
+    console.log('Follow:', e.target.name)
+    const data = { followee_id: e.target.name }
+    await newFollow(data)
+    this.componentDidMount()
+  }
+
+  handleUnfollow = async (e) => {
+    e.preventDefault();
+    console.log('unFollow:', e.target.name)
+    const data = { follow: { followee_id: e.target.name } }
+    await unFollow(data)
+    this.componentDidMount()
+  }
+
   handleSignup = async (e) => {
     e.preventDefault();
     const { newUsername, newEmail, newPassword } = this.state
-    const data = { username: newUsername, email: newEmail, password: newPassword }
+    const lowercaseUsername = newUsername.toLowerCase()
+    const lowercaseEmail = newEmail.toLowerCase()
+    console.log(lowercaseUsername)
+    const data = {
+      username: lowercaseUsername,
+      email: lowercaseEmail,
+      password: newPassword,
+      image_url: default_image
+    }
     await createNewUser(data)
       .then(async () => {
-        const body = { username: newUsername, password: newPassword }
+        const body = { username: lowercaseUsername, password: newPassword }
         const currentUser = await login(body);
-        this.setState({ user: currentUser })
+        this.setState({
+          user: currentUser,
+          newUsername: '',
+          newEmail: '',
+          newPassword: '',
+          signup_modal: false
+        })
       })
-
-    this.setState({
-      newUsername: '',
-      newEmail: '',
-      newPassword: '',
-      signup_modal: false
-    })
+    //window.location.reload();
+    this.componentDidMount();
   }
 
   handleModal = (e) => {
-    //console.log(this.state.avatar)
     const modal_name = e.target.id
     const newState = !this.state[modal_name]
     this.setState({
@@ -121,70 +157,63 @@ class Container extends React.Component {
       newEmail: '',
       newPassword: ''
     })
-    console.log(this.state.newEmail)
   }
 
-  handleUpload = (e) => {
-    console.log(e.target.files[0])
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-
+  handleUpload = async (e) => {
+    // console.log(e.target.files[0])
+    // this.setState({
+    //   [e.target.name]: e.target.value
+    // })
     const image = e.target.files[0]
     let randPrefix = Math.random().toString(36).substring(2);
-    const imgName = randPrefix + '_' + image.name
+    const imgName = randPrefix + '_' + image.name  //add prefix of random hash to image name
     const data = new FormData()
     data.append('file', image, imgName)
-
-
     const imageURL = `https://firebasestorage.googleapis.com/v0/b/bitter-d2094.appspot.com/o/${imgName}?alt=media`
-
-    axios.post(`https://us-central1-bitter-d2094.cloudfunctions.net/uploadFile`, data)
+    await axios.post(`https://us-central1-bitter-d2094.cloudfunctions.net/uploadFile`, data)
       .then(res => {
         console.log('axios res:', res)
       })
-
     this.setState({
-      image_url: imageURL
+      image_url: imageURL,
+      post_image_url: imageURL
     })
     console.log(imageURL)
-
-  }
-
-  handlePostSubmit = (e) => {
-    e.preventDefault()
-    const data = {
-      content: this.state.content,
-      image_url: this.state.image_url
-    }
-    const newPost = createNewUserPost(this.state.user.id, data)
-    console.log(newPost)
-    this.setState({
-      post_modal: false,
-      content: ''
-    })
-    window.location.reload();
   }
 
   handleEditUser = async (e) => {
     e.preventDefault()
+    // let image = ''
+    // if (this.state.image_url === '') {
+    //   image = default_image
+    // } else { }
+    let image = this.state.image_url
     const data = {
       email: this.state.email,
-      password: 'someDummyPassword',  //required to pass strong params, value not important.
+      //password: '12345678',  //required to pass strong params, value not important.
       blurb: this.state.blurb,
-      image_url: this.state.image_url,
+      image_url: image
     }
-    console.log(data)
-    console.log(this.state.user.id)
-
-    const editUser = updateUserById(this.state.user.id, data)
-
-    console.log(editUser)
-
+    await updateUserById(this.state.user.id, data)
     this.setState({
       edit_modal: false
     })
-    window.location.reload();
+    this.componentDidMount()
+  }
+
+  handlePostSubmit = async (e) => {
+    e.preventDefault()
+    const data = {
+      content: this.state.content,
+      image_url: this.state.post_image_url
+    }
+    await createNewUserPost(this.state.user.id, data)
+    this.setState({
+      post_modal: false,
+      content: '',
+      post_image_url: ''
+    })
+    this.componentDidMount()
   }
 
   changeFeedContent = (e) => {
@@ -196,6 +225,20 @@ class Container extends React.Component {
     this.setState({
       [e.target.name]: true
     })
+  }
+
+  handleHate = async (e) => {
+    e.preventDefault();
+    console.log('Hate Clicked!')
+    await newHate(this.state.user.id, e.target.name)
+    this.componentDidMount()
+  }
+
+  handleUnhate = async (e) => {
+    e.preventDefault();
+    console.log('Unhate Clicked!')
+    await removeHate(this.state.user.id, e.target.name)
+    this.componentDidMount()
   }
 
 
@@ -224,6 +267,9 @@ class Container extends React.Component {
             image_url={this.state.image_url}
             content={this.state.content}
             posts={this.state.posts}
+            hates={this.state.hates}
+            handleHate={this.handleHate}
+            handleUnhate={this.handleUnhate}
             followers={this.state.followers}
             followees={this.state.followees}
             char_count={this.state.char_count}
@@ -236,6 +282,8 @@ class Container extends React.Component {
             handleModal={this.handleModal}
             handleChange={this.handleChange}
             handleUpload={this.handleUpload}
+            handleFollow={this.handleFollow}
+            handleUnfollow={this.handleUnfollow}
             handleEditUser={this.handleEditUser}
             handlePostSubmit={this.handlePostSubmit}
             handleLogout={this.handleLogout}
