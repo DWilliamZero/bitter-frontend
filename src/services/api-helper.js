@@ -99,12 +99,17 @@ export const deleteUsersPost = async (userId, postId) => {
 //===========  Hates  =============
 //=================================
 
+export const getAllHates = async () => {       //returns all hates
+  const res = await api.get(`/hates`)
+  return res.data;
+}
+
 export const getHatesByUsersPostId = async (userId, postId) => {       //returns hate_count by postId
   const res = await api.get(`/users/${userId}/posts/${postId}/hates`)
   return res.data;
 }
 
-export const hateThisPost = async (userId, postId) => {
+export const newHate = async (userId, postId) => {
   const res = await api.post(`/users/${userId}/posts/${postId}/hates`)
   return res.data;
 }
@@ -118,6 +123,11 @@ export const removeHate = async (userId, postId) => {
 //==========  Follows  ============
 //=================================
 
+export const getAllFollows = async () => {
+  const res = await api.get(`/follows`)
+  return res.data;
+}
+
 export const getFollowers = async (userId) => {
   const res = await api.get(`/users/${userId}/followers`)
   return res.data;
@@ -129,7 +139,7 @@ export const getFollowees = async (userId) => {
 }
 
 export const newFollow = async (data) => {
-  const res = await api.post(`/follow`, { follow: data })  //check strong params for user_controller
+  const res = await api.post(`/follows`, { follow: data })  //check strong params for user_controller
   return res.data;
 }
 

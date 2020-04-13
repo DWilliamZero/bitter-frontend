@@ -248,7 +248,7 @@ h4.follows {
 .feed-center {
   border-left: 1px solid #8899A6;
   border-right: 1px solid #8899A6;
-  height: 970px;
+  height: 910px;
   width: 50%;
   overflow: auto;  /* This should allow scrolling of overflow only.. */
 }
@@ -380,6 +380,43 @@ border: 5px solid white;
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 30px;
+}
+
+.feed-card-hate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.feed-card-hate-count {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  width: 50%;
+}
+
+.feed-card-hate-btns {
+  display: flex;
+  padding-left: 20px;
+  width: 50%;
+}
+
+#hate-btn {
+  margin-top: -7px;
+}
+
+#unhate-btn {
+  border: 2px solid rgb(29, 161, 242);
+  background-color: rgb(29, 161, 242);
+  color: white;
+  margin-top: -7px;
+}
+
+#unhate-btn:hover {
+  background-color: #8899A6;
+  border: 2px solid #8899A6;
 }
 
 .overlay-on {
