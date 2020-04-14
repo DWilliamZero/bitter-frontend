@@ -1,0 +1,621 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+
+.container {
+  background-color:rgb(21, 32, 43);
+  display: flex;
+  flex-direction: row;
+  height: 900px;
+  width: 100%;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(113, 201, 248);
+  background-image: url('https://dwilliamzero.com/zero-cloud/bitter-logo.png');
+  background-repeat: no-repeat;
+  background-size: 1050px;
+  color: white;
+  width: 50%;
+}
+
+.spy {
+  display: flex;
+  margin: 0;
+  width: 50%;
+}
+
+.make-fun {
+  display: flex;
+  margin: 20px;
+  width: 50%;
+}
+
+.share {
+  display: flex;
+  margin: 20px;
+  width: 50%;
+}
+
+img#spy {
+  width: 40px;
+  margin-right: 10px;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+img#make-fun {
+  width: 40px;
+  margin-right: 10px;
+  margin-top: -5px;
+}
+
+img#share {
+  width: 40px;
+  margin-right: 10px;
+  margin-top: -5px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  background-color:rgb(21, 32, 43);
+  color: #8899A6;
+  width: 50%;
+  padding: 15px;
+}
+.sign-up {
+  color: white;
+  margin: 25% 25%;
+  width: 50%;
+}
+
+img#small-logo-1 {
+  margin-bottom: 20px;
+  width: 50px;
+}
+
+.join-today {
+  margin: 20px 0;
+}
+
+button#signup_modal {
+  background-color: rgb(113, 201, 248);
+  color: white;
+  border: none;
+  margin: 10px 0;
+  width: 100%;
+}
+
+button#signup_modal:hover {
+  background-color: #8899A6;
+}
+
+.signup-modal-on {
+  display: grid;
+  position: fixed;
+  left: 35%;
+  top: 5%;
+  /* border: 2px solid #8899A6; */
+  border-radius: 15px;
+  background-color: rgb(21, 32, 43);
+  box-shadow: 5px 5px 8px black;
+  height: 500px;
+  margin: 200px auto;
+  width: 30%;
+  z-index: 2;
+}
+
+.signup-modal-off {
+display: none
+}
+
+img#small-logo-2 {
+  margin: 20px auto;
+  width: 70px;
+}
+
+.signup-form-text {
+  margin: 10px auto;
+  width: 80%;
+}
+.input-text {
+  font-size: 30px;
+  background: rgb(21, 32, 63);
+  border: none;
+  border-bottom: 3px solid #8899A6;
+  box-sizing: border-box;
+  color: white;
+  outline: none;
+  margin:10px auto;
+  width: 80%;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+button#new-account-btn {
+  background-color: rgb(113, 201, 248);
+  color: white;
+  border: none;
+  margin: 30px auto;
+  width: 80%;
+}
+
+button#new-account-btn:hover {
+  background-color: #8899A6;
+}
+
+.login {
+  margin: 0 auto;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(21, 32, 43);
+  color: #8899A6;
+  height: 71px;
+}
+
+.footer p {
+  margin: 0px;
+  padding-top: 30px;
+}
+input {
+  margin: 10px;
+}
+
+input.username {
+  font-size: 20px;
+  background-color: rgb(21, 32, 63);
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 3px solid #8899A6;
+  color:white;
+  outline: none;
+  padding: 5px;
+
+}
+
+input.password {
+  font-size: 20px;
+  background-color: rgb(21, 32, 63);
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 3px solid #8899A6;
+  color: white;
+  outline: none;
+  padding: 5px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #8899A6;
+}
+
+.password:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgb(29, 161, 242);
+}
+
+.username:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgb(29, 161, 242);
+}
+
+.input-text:focus {
+  border-bottom: 3px solid rgb(29,161,242);
+}
+
+input.username:focus {
+  border-bottom: 3px solid rgb(29,161,242);
+}
+
+input.password:focus {
+  border-bottom: 3px solid rgb(29,161,242);
+}
+
+button {
+  border-radius: 50px;
+  border: 2px solid rgb(29, 161, 242);
+  background-color: rgb(21, 32, 43);
+  font-size: 20px;
+  padding: 10px;
+  color: rgb(29, 161, 242);
+  outline: none;
+}
+
+button:hover {
+  background-color: rgb(21, 32, 63);
+}
+
+.feed-page {
+  display: flex;
+  flex-direction: row;
+  color: rgb(29,161,242);
+  font-size: 20px;
+  width: 100%;
+}
+
+.feed-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+
+img#avatar {
+  width: 125px;
+  height: 125px;
+  object-fit: contain;
+  object-fit: cover;
+  border: 5px solid black;
+  border-radius: 50%;
+  background-color: white;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.blurb {
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 20px 10px;
+}
+
+.follow-count {
+  color: rgb(29,161,242);
+  margin: 10px;
+}
+
+h4.follows {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.edit-user {
+  margin: 10px;
+  color: rgb(29,161,242);
+  text-decoration: underline;
+}
+
+.new-post-btn {
+  margin: 25px;
+}
+
+.feed-center {
+  border-left: 1px solid #8899A6;
+  border-right: 1px solid #8899A6;
+  height: 910px;
+  width: 50%;
+  overflow: auto;  /* This should allow scrolling of overflow only.. */
+}
+
+.feed-center-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-bottom: 1px solid #8899A6;
+  height: 100px;
+  color: white;
+  font-size: 20px;
+  padding: 0;
+}
+
+.feed-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+button.my-feed-btn, button.followers-btn, button.following-btn {
+  border: none;
+  border-radius: 0;
+  padding: 5px;
+  width: 33%;
+}
+
+button.my-feed-btn:active, button.followers-btn:active, button.following-btn:active {
+  border-bottom: 2px solid rgb(29, 161, 242);
+}
+
+button.my-feed-btn-active, button.followers-btn-active, button.following-btn-active {
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid rgb(29, 161, 242);
+  padding: 5px;
+  width: 33%;
+}
+
+.feed-card {
+  border-bottom: 1px solid #8899A6;
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-card-title {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  margin-top: 30px;
+  margin-left: 15px;
+}
+
+.feed-card-title-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 75%;
+}
+
+.feed-card-title-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 30px;
+  width: 25%;
+}
+
+.feed-card-title-blurb {
+  color: white;
+  margin-left: 85px;
+  margin-bottom: 20px;
+}
+
+img.feed-card-avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  object-fit: cover;
+  border: 3px solid black;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.feed-card-username {
+  margin: auto 15px;
+  text-transform: uppercase;
+  color: rgb(29, 161, 242);
+}
+
+.feed-card-follows {
+margin: auto 5px;
+}
+
+.feed-card-follow-count {
+  color: rgb(29, 161, 242);
+  margin: auto 5px;
+}
+
+#follow-btn{
+margin-left: 35%;
+}
+
+#unfollow-btn {
+  border: none;
+  background-color: rgb(29, 161, 242);
+  color: white;
+  margin-left: 30%;
+}
+
+#unfollow-btn:hover {
+  background-color: #8899A6;
+}
+
+.feed-card-post {
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-card-content {
+margin: 10px 20px;
+}
+
+.feed-card-image {
+border: 5px solid white;
+  max-width: 90%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.feed-card-hate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.feed-card-hate-count {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  width: 50%;
+}
+
+.feed-card-hate-btns {
+  display: flex;
+  padding-left: 20px;
+  width: 50%;
+}
+
+#hate-btn {
+  margin-top: -7px;
+}
+
+#unhate-btn {
+  border: 2px solid rgb(29, 161, 242);
+  background-color: rgb(29, 161, 242);
+  color: white;
+  margin-top: -7px;
+}
+
+#unhate-btn:hover {
+  background-color: #8899A6;
+  border: 2px solid #8899A6;
+}
+
+.overlay-on {
+  position: fixed; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(100, 100, 100, 0.7); /* Black background with opacity */
+  z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+.overlay-off {
+  display: none; /* Hidden by default */
+}
+
+.new-post-modal-on {
+  display: grid;
+  position: fixed;
+  left: 35%;
+  top: 5%;
+  border-radius: 15px;
+  background-color: rgb(21, 32, 63);
+  box-shadow: 5px 5px 8px black;
+  height: 300px;
+  margin: 200px auto;
+  width: 30%;
+  z-index: 2;
+}
+
+.new-post-modal-off {
+display: none
+}
+
+.edit-modal-on {
+  display: grid;
+  position: fixed;
+  left: 35%;
+  top: 0;
+  border-radius: 15px;
+  background-color: rgb(21, 32, 63);
+  box-shadow: 5px 5px 8px black;
+  height: 600px;
+  margin: 200px auto;
+  width: 30%;
+  z-index: 2;
+}
+
+.edit-modal-off {
+display: none
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  color: rgb(29, 161, 242);
+  margin: 20px;
+  width: 80%;
+}
+
+.edit-title {
+  margin: 30px auto;
+}
+
+textarea#edit-blurb {
+  background-color: rgb(21, 32, 63);
+  border:  black;
+  color: white;
+  font-size: 20px;
+  resize: none;
+  outline: none;
+  margin: 20px;
+}
+
+input#edit-email {
+  background-color: rgb(21, 32, 63);
+  border:  black;
+  color: white;
+  font-size: 20px;
+  resize: none;
+  outline: none;
+  margin:20px;
+}
+
+input#edit-avatar {
+  margin: 20px;
+}
+
+.edit-modal-btn {
+  margin: 10px;
+}
+
+.edit-close {
+  color: #8899A6;
+  font-size: 20px;
+  position: relative;
+  left: 100%;
+  top: 0%;
+}
+
+.edit-close:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.close {
+  color: #8899A6;
+  font-size: 20px;
+  position: relative;
+  left: 92%;
+  top: 3%;
+}
+
+.close:hover {
+  color: white;
+  cursor: pointer;
+}
+
+textarea {
+  background-color: rgb(21, 32, 63);
+  border:  black;
+  color: white;
+  font-size: 20px;
+  resize: none;
+  outline: none;
+  margin: 20px;
+}
+
+.modal-btn {
+  margin: 10px 20px;
+}
+
+.img-uploader {
+  font-size: 17px;
+  color: rgb(29, 161, 242);
+  margin: 20px;
+  width: 200px;
+}
+
+.char-count {
+  display: inline;
+  color: white;
+  font-size: 20px;
+  margin: 0;
+}
+
+.feed-card-right {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.logout {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+  }
