@@ -46,7 +46,8 @@ function Feed(props) {
             <div className='feed-buttons'>
               <button onClick={props.changeFeedContent} name='feed_active' className={props.feed_active ? 'my-feed-btn-active' : 'my-feed-btn'}>Feed</button>
               <button onClick={props.changeFeedContent} name='followers_active' className={props.followers_active ? 'followers-btn-active' : 'followers-btn'}>Followers</button>
-              <button onClick={props.changeFeedContent} name='following_active' className={props.following_active ? 'following-btn-active' : 'following-btn'}>Following</button></div>
+              <button onClick={props.changeFeedContent} name='following_active' className={props.following_active ? 'following-btn-active' : 'following-btn'}>Following</button>
+            </div>
           </div>
           {props.feed_active ?
             <FeedCard

@@ -85,7 +85,8 @@ class Container extends React.Component {
 
   handleLogin = async (e) => {
     e.preventDefault();
-    const body = { username: this.state.username, password: this.state.password }
+    const { username, password } = this.state
+    const body = { username: username.toLowerCase(), password: password }
     const currentUser = await login(body);
     this.setState({
       user: currentUser,
