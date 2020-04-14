@@ -142,8 +142,7 @@ class Container extends React.Component {
           signup_modal: false
         })
       })
-    //window.location.reload();
-    this.componentDidMount();
+    window.location.reload();
   }
 
   handleModal = (e) => {
@@ -187,7 +186,7 @@ class Container extends React.Component {
     // if (this.state.image_url === '') {
     //   image = default_image
     // } else { }
-    let image = this.state.image_url
+    let image = this.state.post_image_url
     const data = {
       email: this.state.email,
       //password: '12345678',  //required to pass strong params, value not important.
@@ -196,7 +195,8 @@ class Container extends React.Component {
     }
     await updateUserById(this.state.user.id, data)
     this.setState({
-      edit_modal: false
+      edit_modal: false,
+      post_image_url: ''
     })
     this.componentDidMount()
   }

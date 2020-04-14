@@ -64,6 +64,7 @@ function Feed(props) {
           {props.followers_active ?
             <FollowersCard
               followers={props.followers}
+              followees={props.followees}
               handleFollow={props.handleFollow}
               handleUnfollow={props.handleUnfollow}
             />
@@ -71,7 +72,6 @@ function Feed(props) {
           {props.following_active ?
             <FollowingCard
               followees={props.followees}
-              handleFollow={props.handleFollow}
               handleUnfollow={props.handleUnfollow}
             />
             : ''}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 function FollowingCard(props) {
-  const { followees, handleFollow, handleUnfollow } = props
+  const { followees, handleUnfollow } = props
   return (
     followees.map((followee, key) => (
       < div key={key} className='feed-card' >
@@ -12,7 +12,7 @@ function FollowingCard(props) {
             <h4 className='feed-card-follows'>Followers: <span className='feed-card-follow-count'>{followee.follower_count}</span> Following: <span className='feed-card-follow-count'>{followee.followee_count}</span></h4>
           </div>
           <div className='feed-card-title-right'>
-            {false ? <button id='follow-btn' name={followee.id} onClick={handleFollow}>Follow</button> : <button id='unfollow-btn' name={followee.id} onClick={handleUnfollow}>Unfollow</button>}
+            <button id='unfollow-btn' name={followee.id} onClick={handleUnfollow}>Unfollow</button>
           </div>
         </div>
         <div className='feed-card-title-blurb'>{followee.blurb}</div>
