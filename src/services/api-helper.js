@@ -1,14 +1,14 @@
 const axios = require('axios');
 
-//develop api
-const api = axios.create({
-  baseURL: 'http://localhost:3000'
-})
-
-// //production api
+// //develop api
 // const api = axios.create({
 //   baseURL: 'http://localhost:3000'
 // })
+
+//production api
+const api = axios.create({
+  baseURL: 'https://bitter-backend-2020.herokuapp.com'
+})
 
 //=================================
 //===========  Auth  ==============

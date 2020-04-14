@@ -19,7 +19,7 @@ function NewPost(props) {
           className='img-uploader'
           type='file'
           name='image_name'
-          value={props.image_name}
+          value={props.post_image_name}
           onChange={props.handleUpload} />
         <div className='char-count'>chars left: {props.char_count}</div>
       </form>
